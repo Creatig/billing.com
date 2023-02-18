@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+<style>
+input[type="text"]
+{
+display:inline-block;
+}
+</style>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-compatible" content="IE-edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<img src="" alt="error"><br>
+<h1>BILLING FORM </h1>
+</head>
+<fieldset>
+
+  <form action="https://script.google.com/macros/s/AKfycbyBG6RJhli16KWuvjznRS5ADOISMR0KklkONQA7vW3YTAmBVCcJVskl6-qU9o1GANnX/exec" method="post">
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date"><br><br>
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time"><br><br>
+    <label for="item-name">Item Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="price">Item Price:</label>
+    <input type="number" id="price" name="price"><br><br>
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" name="quantity"><br><br>
+    <label for="discount">Discount (%):</label>
+    <input type="number" id="discount" name="discount"><br><br>
+    <label for="profit">Profit (%):</label>
+    <input type="number" id="profit" name="profit"><br><br>
+    <button type="button" onclick="calculateTotal()">Calculate Total</button><br><br>
+    <label for="totalamount">TotalAmount:</label>
+    <input type="number" id="totalamount" name="totalamount"><br><br>
+    <button type="button" onclick="showData()">Show Data</button><br><br>
+    <textarea id="data-box" rows="10" cols="50"></textarea><br><br>
+    <button type="submit"  onclick="savedata()" >Submit</button>
+  </form>
+</fieldset>
+<script>
+    function calculateTotal() {
+      let Price = document.getElementById("price").value;
+      let quantity = document.getElementById("quantity").value;
+      let discount = document.getElementById("discount").value;
+      let profit = document.getElementById("profit").value;
+      
+      let totalAmount = Price * quantity * (1 - discount/100) * (1 + profit/100);
+      
+      document.getElementById("totalamount").value = totalAmount.toFixed(2);
+    }
+    
+    function showData() 
+{
+      let date = document.getElementById("date").value;
+      let time = document.getElementById("time").value;
+      let Name = document.getElementById("name").value;
+      let Price = document.getElementById("price").value;
+      let quantity = document.getElementById("quantity").value;
+      let discount = document.getElementById("discount").value;
+      let profit = document.getElementById("profit").value;
+      let totalAmount = document.getElementById("totalamount").value;
+      
+      let data = "Date: " + date + "\n" +
+                 "Time: " + time + "\n" +
+                 " Name: " + Name + "\n" +
+                 " Price: " + Price + "\n" +
+                 "Quantity: " + quantity + "\n" +
+                 "Discount (%): " + discount + "\n" +
+                 "Profit (%): " + profit + "\n" +
+                 "Total Amount: " + totalAmount;
+                 
+      document.getElementById("data-box").value = data;
+    }
+
+</script>
+  </body>
+</html>
